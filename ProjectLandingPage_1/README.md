@@ -65,10 +65,9 @@ Here is a sample TOC(*wow! such cool!*) that is actually the TOC for this README
 - [Installation](#installation)
 - [Usage](#usage)
 - [Development](#development)
-- [Contribute](#contribute)
-    - [Sponsor](#sponsor)
-    - [Adding new features or fixing bugs](#adding-new-features-or-fixing-bugs)
-- [License](#license)
+    - [Project requirement](#project-requirement)
+    - [Project solving](#project-solving)
+- [The Author](#the-author)
 - [Footer](#footer)
 
 # Installation
@@ -92,12 +91,17 @@ To use this project, first clone the repo on your device using the command below
 
 ```git clone https://github.com/navendu-pottekkat/nsfw-filter.git``` -->
 
+To download this project feel free to clone the repo on your device using the following command:
 
+```git init```
+
+```git clone https://github.com/ZEXAWY/Landing-Page-Project-Udacity.git```
 
 # Usage
 [(Back to top)](#table-of-contents)
 
 <!-- This is optional and it is used to give the user info on how to use the project after installation. This could be added in the Installation section also. -->
+There's nothing to use in here unless you want to add or develope more stuff in this project feel free to do so, it's not a personal project it's a free source from udacity to practice on doing some great stuff using JavaScript and manipulating the DOM.
 
 # Development
 [(Back to top)](#table-of-contents)
@@ -109,44 +113,43 @@ You could give **instructions in depth** of **how the code works** and how every
 You could also give specific instructions to how they can setup their development environment.
 
 Ideally, you should keep the README simple. If you need to add more complex explanations, use a wiki. Check out [this wiki](https://github.com/navendu-pottekkat/nsfw-filter/wiki) for inspiration. -->
+### Project Requirement:
+- Navigation:
 
-# Contribute
+    Navigation should be build dynamically as an unordred list <ul></ul> element. and navigating should be build using ```append```, ```appendChild```, and ```innnerHTML```.
+- Section active state:
+
+        It should be clear which section is being viewed while scrolling through the page.
+- scroll to anchor:
+
+        When clicking an item from the navigation menu, the link should scroll to the appropriate section.
+
+### Project solving:
+- the first thing i start building the navigation bar by defining the variables which will hold the sub element inside the main navbar menu, then building my builder function to build the navigation bar dynamically, in this case, i chosed three main gloabal variables to hold everything i will need will going on and these are:
+    - ```sections``` to hold the all sections inside the page.
+    - ```navbar``` to hold the subelements inside the navigation menu.
+    - ```fragment``` for effeciency purpose
+- The ```navMenuBuilder``` function, iterating over all the sections in the page to get every section id and section data we use to build our new created elements and link them to each others, and creating a new ```<li>``` elements to hold the anchor's ```<a>``` elements inside the navigation bar menu we will use later to navigate to the right section using the ```id``` attribute inside the ```li``` element using the ```#``` to refer the section we want to go to.
+- Adding the class to each ```anchor``` element, and then adding the title to this element to appear with the name according to the section using the ``` data``` attribute we get previously.
+- Adding ```eventListener``` to the ```anchor``` element to navigate smoothly. and pervent the default behavior which will jump instantly to the section.
+- The final thing is to append all the element to each other, the ```anchor``` to the ```li```, the ```li``` to the ```fragment```, and the ```fragment``` to the main ```navBar``` element.
+
+one more thing is to add ```eventListener``` to the ```window``` to tell the browser when loading he should run the main navMenuBuilder function instantly. instead of just write it down to run after some lines of codes. that's to always run the main navMenuBuilder funtion even if there were error in loading the page in previous lines.
+
+- For the section view state i use ```IntersectionObserver``` class instead of ```getBoundingClientRect``` because i find it easier to deal with without need to assign the ```top``` pixel of the section when it appears, and when a section ```isIntersecting```we add the ```your-active-class``` if it's not not exist, and remove the class when the section ```is not intersecting```. And for that i divided the code into three main pieces:
+    - the Object option: where i only need the threshold property.
+    - and the callBack function to add and remove the ```your-active-class``` to the intersecting section... extra thing here is i added an ```active``` class to the element in the ```navBar``` to be highlighted according to section instersecting at the moment. 
+    - The ```observer``` variable which hold the ```IntersectingObserver``` class and use it when we add another ```eventListener``` to the window while scrolling to use the ```observe``` method on the sections to get the section inView right now.
+
+            this ```active``` class i defined in the CSS file under ```.navbar__menu .menu__link.active```.
+- Final thing i add an eventListener to the window while scrolling to observe the sections, and then applying the ```intersectionObserver``` to the current section in view.
+
+
+# The Author
 [(Back to top)](#table-of-contents)
 
-<!-- This is where you can let people know how they can **contribute** to your project. Some of the ways are given below.
+I am a new developer student who like programing so much... My name is ```Ahmed Mohamed Zakaria```, at the moment of typing this file i am only a student of Web Development Professional Track powered by Udacity.com
 
-Also this shows how you can add subsections within a section. -->
-
-### Sponsor
-[(Back to top)](#table-of-contents)
-
-<!-- Your project is gaining traction and it is being used by thousands of people(***with this README there will be even more***). Now it would be a good time to look for people or organisations to sponsor your project. This could be because you are not generating any revenue from your project and you require money for keeping the project alive.
-
-You could add how people can sponsor your project in this section. Add your patreon or GitHub sponsor link here for easy access.
-
-A good idea is to also display the sponsors with their organisation logos or badges to show them your love!(*Someday I will get a sponsor and I can show my love*) -->
-
-### Adding new features or fixing bugs
-[(Back to top)](#table-of-contents)
-
-<!-- This is to give people an idea how they can raise issues or feature requests in your projects. 
-
-You could also give guidelines for submitting and issue or a pull request to your project.
-
-Personally and by standard, you should use a [issue template](https://github.com/navendu-pottekkat/nsfw-filter/blob/master/ISSUE_TEMPLATE.md) and a [pull request template](https://github.com/navendu-pottekkat/nsfw-filter/blob/master/PULL_REQ_TEMPLATE.md)(click for examples) so that when a user opens a new issue they could easily format it as per your project guidelines.
-
-You could also add contact details for people to get in touch with you regarding your project. -->
-
-# License
-[(Back to top)](#table-of-contents)
-
-<!-- Adding the license to README is a good practice so that people can easily refer to it.
-
-Make sure you have added a LICENSE file in your project folder. **Shortcut:** Click add new file in your root of your repo in GitHub > Set file name to LICENSE > GitHub shows LICENSE templates > Choose the one that best suits your project!
-
-I personally add the name of the license and provide a link to it like below. -->
-
-[GNU General Public License version 3](https://opensource.org/licenses/GPL-3.0)
 
 # Footer
 [(Back to top)](#table-of-contents)
@@ -154,10 +157,11 @@ I personally add the name of the license and provide a link to it like below. --
 <!-- Let's also add a footer because I love footers and also you **can** use this to convey important info.
 
 Let's make it an image because by now you have realised that multimedia in images == cool(*please notice the subtle programming joke). -->
+This project is powered by Udacity.com professional web development track and all credit goes to them in creating the foundation files to go throw this project, i only added some function to it to make it dynamic nothing more. the HTML and the CSS files were created by Udacity not by me.
 
 Leave a star in GitHub, give a clap in Medium and share this guide if you found this helpful.
 
 <!-- Add the footer here -->
 
-<!-- ![Footer](https://github.com/navendu-pottekkat/awesome-readme/blob/master/fooooooter.png) -->
+![Footer](https://github.com/navendu-pottekkat/awesome-readme/blob/master/fooooooter.png) 
 
